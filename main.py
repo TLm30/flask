@@ -1,12 +1,14 @@
 from flask import Flask, jsonify
 import os
+import requests
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def index():
-    return jsonify({"Choo Choo": "Welcome to your Flask app 🚅"})
+    x = requests.get('https://www.google.com/')
+    return jsonify({"Choo Choo": "Welcome to your Flask app", "status":x.status_code})
 
 
 if __name__ == '__main__':
